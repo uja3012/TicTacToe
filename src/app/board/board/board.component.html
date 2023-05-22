@@ -1,0 +1,64 @@
+<div class="header">
+
+	<h2 class="text-center" *ngIf="!gameService.winner && !gameService.isGameRunning"> 
+		<label>Select the size of Board: </label>
+		<Select #boardSize (change)="onSelected()" [value]="gameService.boardSize.value">
+			<option default></option>
+			<option value="9">3X3</option>
+			<option value="25">5X5</option>
+			<option value="64">8X8</option>
+			<option value="100">10X10</option>
+		</Select>
+	</h2>
+
+	<h2 class="text-center" *ngIf="!gameService.winner && !gameService.isGameRunning">Start With</h2>
+
+	<div *ngIf="!gameService.winner && !gameService.isGameRunning" class="text-center" data-toggle="buttons">
+		<label class="btn btn-secondary" [class.active]="gameService.activePlayer == 'X'">
+			<input value="X" type="radio" name="activePlayer" [(ngModel)]="gameService.activePlayer" />
+			X
+		</label>
+		<label class="btn btn-secondary" [class.active]="gameService.activePlayer == 'O'">
+			<input value="O" type="radio" name="activePlayer" [(ngModel)]="gameService.activePlayer" />
+			O
+		</label>
+	</div>
+
+	<div class="text-center">
+		<img *ngIf="gameService.winner" height="200" src="assets/winner-gif-1.gif" />
+		<h1 *ngIf="gameService.winner"> {{gameService.activePlayer }} Won </h1>
+	
+		<button *ngIf="!gameService.gameOver && gameService.isGameRunning" (click)="resetGame()"> Start Again </button>
+		
+		<button *ngIf="gameService.winner && gameService.gameOver" (click)="resetGame()"> New Game </button>
+	</div>
+
+	<h1 class="text-center" *ngIf="!gameService.winner && !gameService.gameOver && gameService.isGameRunning"
+		[ngClass]="{'text-teal': gameService.activePlayer == 'O'}">
+		{{ gameService.activePlayer }}'s Turn
+	</h1>
+
+</div>
+
+
+
+<section *ngIf="!gameService.winner">
+	<!-- row 1 -->
+	<!-- <div class="inline-flex" *ngFor="let item of [].constructor(boardLength);">
+		<div class="h-5" *ngFor="let item of [].constructor(boardLength);">
+			{{getIndex()}}
+			<app-square [square]="board.shift()" border-blue> </app-square>
+		</div>
+		<br/>
+	</div> -->
+	<ng-container *ngFor="let item of gameService.board;let i = index;">
+		<div class="h-5">
+			<app-square [square]="item" border-blue> </app-square>
+
+		</div>
+		<div *ngIf="((i+1) % boardLength) == 0" class="line-break"></div>
+	</ng-container>
+
+</section>
+
+

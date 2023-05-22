@@ -1,0 +1,129 @@
+section {
+    min-width: 12rem;
+    max-width: 500rem;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    margin: 2% auto 3% auto;
+    flex-wrap: wrap;
+}
+
+.square-container {
+    flex: 0 0 32%;
+    /* height: 100%; */
+}
+
+.h-5 {
+    height: 5rem;
+    width: 5rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+}
+
+.line-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn-secondary {
+    font-size: x-large;
+}
+
+button {
+    display: inline-block;
+    padding: 11px 22px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px #999;
+    margin-top: 2rem;
+}
+
+h1{
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+
+@media only screen and (max-width: 840px) {
+    section{
+        margin: 3% auto 2% auto;
+    }
+    
+    h1{
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .h-5 {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .btn-secondary {
+        font-size: large;
+    }
+
+    button{
+        padding: 7px 14px;
+        font-size: 14px;
+        border-radius: 9px;
+        box-shadow: 0 5px #1976d2b5;
+        margin-top: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    section{
+        margin: 5% auto 5% auto;
+    }
+    
+    h1{
+        font-size: 1.2em;
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    .h-5 {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .btn-secondary {
+        font-size: medium;
+    }
+
+    button{
+        padding: 5px 10px;
+        font-size: 13px;
+        border-radius: 6px;
+        box-shadow: 0 4px #1976d2b5;
+        margin-top: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 350px) {   
+
+    .h-5 {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}

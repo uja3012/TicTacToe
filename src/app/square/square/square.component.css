@@ -1,0 +1,38 @@
+.game-square {
+	height: 96%;
+	text-align: center;
+	line-height: 1;
+	cursor: pointer;
+}
+
+p {
+	display: inline;
+	margin: 0px;
+	font-size: 5rem;
+	overflow: hidden;
+}
+
+.noClick {
+	pointer-events: none;
+}
+
+@media only screen and (max-width: 840px) {
+    
+	p {
+		font-size: 3rem;
+	}
+}
+
+@media only screen and (max-width: 560px) {
+    
+	p {
+		font-size: 2rem;
+	}
+}
+
+@media only screen and (max-width: 350px) {
+    
+	p {
+		font-size: 1.5rem;
+	}
+}

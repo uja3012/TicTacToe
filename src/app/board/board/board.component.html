@@ -27,10 +27,12 @@
 	<div class="text-center">
 		<img *ngIf="gameService.winner" height="200" src="assets/winner-gif-1.gif" />
 		<h1 *ngIf="gameService.winner"> {{gameService.activePlayer }} Won </h1>
-	
-		<button *ngIf="!gameService.gameOver && gameService.isGameRunning" (click)="resetGame()"> Start Again </button>
+
+		<button *ngIf="gameService.isGameRunning" (click)="resetGame()"> Start Again </button>
 		
 		<button *ngIf="gameService.winner && gameService.gameOver" (click)="resetGame()"> New Game </button>
+
+		<h1 *ngIf="gameService.gameOver && !gameService.winner"> Game Over!</h1>
 	</div>
 
 	<h1 class="text-center" *ngIf="!gameService.winner && !gameService.gameOver && gameService.isGameRunning"

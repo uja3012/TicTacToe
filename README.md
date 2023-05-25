@@ -20,4 +20,18 @@ If you are running the project on a Linux or MacOS environment, you may have to 
 
 <img width="605" alt="image" src="https://github.com/uja3012/TicTacToe/assets/129605570/51a7a54a-2877-4f29-aff5-28ebea3b0964">
 
+# Set up local HTTP server for Python APIs
+  1. Download & install Python
+  2. Open CMD and navigate to 'storeJsonData' folder
+  3. Run below commands to start local server for Python APIs.
+      ```
+      pip install -r requirements.txt
+      ```
+      It will install necessary packages to run application successfully.
+      Then, start application execution with
+      ```
+      python app.py
+      ```
+      
+      
 

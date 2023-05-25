@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
 @Injectable({
 	providedIn: 'root',
   })
@@ -17,7 +26,9 @@ export class GameService {
 	boardSize = new BehaviorSubject<number>(9);
 	boardSizeObservable = this.boardSize.asObservable();
 
-	constructor() {
+	private storeWinnerInfoUrl = 'http://localhost:5000'; 
+
+	constructor(private http: HttpClient) {
 		this.newGame()
 	}
 
@@ -60,6 +71,7 @@ export class GameService {
 			this.winner = true;
 			this.isGameRunning = false;
 			this.isGameOver = true;
+			this.storeWinnerInfo().subscribe(value => console.log(value));
 		}
 	}
 
@@ -140,5 +152,17 @@ export class GameService {
 		}
 		return false
 	}
+
+	// api integration with python
+	storeWinnerInfo() {
+		let data = {
+			winner: this.activePlayer ? this.activePlayer:'',
+			dateTime: new Date().toLocaleString()
+		} ;
+
+		console.log('data', data);
+
+		return this.http.put(this.storeWinnerInfoUrl + '/winnerInfo', data, httpOptions);
+	  }
 
 }
